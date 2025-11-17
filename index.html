@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Birthday, My Love!</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #0b015a;
+      text-align: center;
+      padding: 40px;
+      margin: 0;
+      /* overflow: hidden; REMOVED for scrollability */
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    img {
+      border-radius: 25px;
+      width: 350px;
+      height: auto;
+      margin: 20px 0;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+    .message {
+      font-size: 1.6em;
+      margin: 20px 0;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-style: italic;
+    }
+    .quote {
+      font-size: 1.2em;
+      margin: 15px 0;
+      font-weight: 600;
+      color: #c30726;
+    }
+    .song {
+      margin-top: 30px;
+    }
+    /* Flower Style */
+    .flower {
+      position: fixed;
+      left: 0;
+      top: 0;
+      pointer-events: none;
+      z-index: 10;
+      font-size: 2em;
+      transition: transform 0.3s linear;
+    }
+  </style>
+</head>
+<body>
+  <h1>Happy Birthday, My Love!</h1>
+  <!-- Replace the src below with your girlfriend's photo filename (e.g. her.jpg) -->
+  <img src="c:\Users\jasob\OneDrive\Desktop\her.jpg" alt="Beautiful photo of my love" />
+  
+  <div class="message">
+    My world is brighter because of you. Today we celebrate you and all the joy you bring.<br />
+    Here's to all your dreams coming true. Happy Birthday, sweetheart!
+  </div>
+  <div class="quote">
+    "You are the sunshine that brightens every moment of my life."<br />
+    — Always yours
+  </div>
+  <div class="quote">
+    "In your smile, I see something more beautiful than the stars."<br />
+    — With all my heart
+  </div>
+
+  <!-- Autoplay Birthday Song -->
+  <div class="song">
+    <audio id="aud" autoplay>
+      <source src="c:\Users\jasob\Downloads\song.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <br>
+    <!-- Tip: If autoplay fails, she can click play! -->
+  </div>
+
+  <!-- Add more content below to enable scrolling (example gallery) -->
+  <div style="margin-top:40px;">
+    <h2>More Memories & Wishes for You</h2>
+    <p>"Every moment with you is a memory I cherish. May your birthday be as beautiful as your heart."</p>
+    <img src="c:\Users\jasob\OneDrive\Desktop\her3.jpg" alt="Cute memory photo" style="width:200px; margin:10px;">
+    <p>"To the girl who makes my world wonderful, happiest birthday!"</p>
+  </div>
+
+  <!-- Flower Sprinkles Animation Script -->
+  <script>
+    // Simple falling flowers (emoji)
+    function createFlower() {
+      var flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.innerHTML = '🌸'; // You can use '🌹', '💐', '🌻', etc.
+      flower.style.left = Math.random() * window.innerWidth + 'px';
+      flower.style.fontSize = (20 + Math.random() * 40) + 'px';
+      document.body.appendChild(flower);
+
+      var fallTime = 3000 + Math.random() * 3000; // 3-6 seconds
+      flower.animate([
+        { transform: `translateY(0px)` },
+        { transform: `translateY(${window.innerHeight}px)` }
+      ], { duration: fallTime, easing: 'linear' });
+
+      setTimeout(function() {
+        document.body.removeChild(flower);
+      }, fallTime);
+    }
+    setInterval(createFlower, 300); // One flower every 0.3 sec
+
+    // Attempt to autoplay when page loads for browsers that block (will only work if allowed)
+    window.onload = function() {
+      var aud = document.getElementById('aud');
+      aud.play().catch(function(){ /* ignore browser block */ });
+    };
+  </script>
+</body>
+</html>
+
